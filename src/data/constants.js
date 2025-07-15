@@ -10,10 +10,11 @@ export const Bio = {
     "I am a passionate and curious individual with a strong interest in blockchain technology. I am actively learning and building in the Web3 space, with a focus on developing decentralized applications (DApps) and smart contracts. I believe in the future of decentralization and am driven to contribute meaningful projects that make an impact. With a growth mindset and dedication to learning, I aim to become a skilled blockchain developer and help shape the future of technology.",
   github: "https://github.com/trieuphan", // Cập nhật nếu bạn có GitHub cá nhân
   resume: "https://your-resume-link.com", // Thay bằng link CV/resume thật nếu có
-  linkedin: "https://www.linkedin.com/in/trieu-phan/", // Cập nhật đúng LinkedIn
-  twitter: "https://twitter.com/trieuphan", // Nếu có
-  insta: "https://www.instagram.com/trieuphan", // Nếu muốn giữ
-  facebook: "https://www.facebook.com/trieuphan", // Nếu có
+  linkedin: "https://www.linkedin.com/in/phan-thanh-trieu-28334b346/", // Cập nhật đúng LinkedIn
+  twitter: "https://x.com/Phthtrieuu", // Nếu có
+  insta: "https://www.instagram.com/pt_210/", // Nếu muốn giữ
+  facebook: "https://www.facebook.com/trieu.phan.5525/",
+  telegram: "https://t.me/TrieuPhann", // Nếu có
 };
 
 export const skills = [

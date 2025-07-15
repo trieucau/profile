@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import "react-vertical-timeline-component/style.min.css";
-
+import emailjs from "@emailjs/browser";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -107,6 +107,26 @@ const ContactInputMessage = styled.textarea`
 `;
 
 const Contact = () => {
+  const form = useRef();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "Your-serviceid",
+        "your_template_id",
+        form.current,
+        "tourapiid/tokenid"
+      )
+      .then(
+        (result) => {
+          alert("Message Sent");
+          form.current.result();
+        },
+        (error) => {
+          alert(error);
+        }
+      );
+  };
   return (
     <Container id="Contact">
       <Wrapper>
@@ -114,7 +134,7 @@ const Contact = () => {
         <Desc style={{ marginBottom: "40px" }}>
           Feel free to reach out to me for any questions or opportunities!
         </Desc>
-        <ContactForm>
+        <ContactForm onSubmit={handleSubmit}>
           <ContactTitle>Email Me 🚀</ContactTitle>
           <ContactInput placeholder="Your Email" name="from_email" />
           <ContactInput placeholder="Your Name" name="from_name" />
