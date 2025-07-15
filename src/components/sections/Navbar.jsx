@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { useTheme } from "styled-components";
 import { Link as LinkR } from "react-router-dom";
-import { Bio } from "../data/constants";
+import { Bio } from "../../data/constants";
 import { MenuRounded } from "@mui/icons-material";
 
 const Nav = styled.div`
@@ -26,6 +26,7 @@ const NavbarContainer = styled.div`
   justify-content: space-between;
   font-size: 1rem;
 `;
+
 const NavLogo = styled(LinkR)`
   width: 80%;
   padding: 0 6px;
@@ -34,6 +35,7 @@ const NavLogo = styled(LinkR)`
   font-weight: 500;
   font-size: 18px;
 `;
+
 const NavItems = styled.ul`
   width: 100%;
   display: flex;
@@ -46,6 +48,7 @@ const NavItems = styled.ul`
     display: none;
   }
 `;
+
 const NavLink = styled.a`
   color: ${({ theme }) => theme.text_primary};
   font-weight: 500;
@@ -68,6 +71,7 @@ const ButtonContainer = styled.div`
     display: none;
   }
 `;
+
 const GithubButton = styled.a`
   border: 1px solid ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.primary};
@@ -111,19 +115,19 @@ const MobileMenu = styled.ul`
   position: absolute;
   top: 80px;
   right: 0;
-
   transition: all 0.6s ease-in-out;
-  transform: ${({ isOpen }) =>
-    isOpen ? "translateY(0)" : "translateY(-100%)"};
+  transform: ${({ $isOpen }) =>
+    $isOpen ? "translateY(0)" : "translateY(-100%)"};
   border-radius: 0 0 20px 20px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
-  z-index: ${({ isOpen }) => (isOpen ? "1000" : "-1000")};
+  opacity: ${({ $isOpen }) => ($isOpen ? "100%" : "0")};
+  z-index: ${({ $isOpen }) => ($isOpen ? "1000" : "-1000")};
 `;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
+
   return (
     <Nav>
       <NavbarContainer>
@@ -139,10 +143,11 @@ const Navbar = () => {
           <NavLink href="#Experience">Experience</NavLink>
           <NavLink href="#Projects">Projects</NavLink>
           <NavLink href="#Education">Education</NavLink>
+          <NavLink href="#Contact">Contact</NavLink>
         </NavItems>
 
         {isOpen && (
-          <MobileMenu isOpen={isOpen}>
+          <MobileMenu $isOpen={isOpen}>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#About">
               About
             </NavLink>
@@ -157,6 +162,9 @@ const Navbar = () => {
             </NavLink>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Education">
               Education
+            </NavLink>
+            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Contact">
+              Contact
             </NavLink>
             <GithubButton
               href={Bio.github}

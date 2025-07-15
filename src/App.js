@@ -1,6 +1,5 @@
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme } from "./utils/Themes";
-import Navbar from "./components/Navbar";
 import { BrowserRouter } from "react-router-dom";
 import Hero from "./components/sections/Hero";
 import Skills from "./components/sections/Skills";
@@ -10,15 +9,17 @@ import StyledStarCanvas from "./components/canvas/Stars";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
+import Navbar from "./components/sections/Navbar";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text_primary};
   width: 100%;
-  height: 90vh;
+  min-height: 100vh;
   overflow-x: hidden;
   position: relative;
 `;
+
 const Wrapper = styled.div`
   padding-bottom: 100px;
   background: linear-gradient(
@@ -33,6 +34,8 @@ const Wrapper = styled.div`
     );
   width: 100%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
+  position: relative;
+  z-index: 1;
 `;
 
 function App() {
@@ -41,8 +44,17 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Body>
-          <StyledStarCanvas />
-          <div>
+          <StyledStarCanvas
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 0,
+            }}
+          />
+          <div style={{ position: "relative", zIndex: 1 }}>
             <Hero />
             <Wrapper>
               <Skills />

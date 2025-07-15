@@ -122,19 +122,24 @@ const Skills = () => {
         <Desc>
           Here are some of my skills on which I have been work past 3 years.
         </Desc>
-
         <SkillsContainer>
           {skills.map((skill, index) => (
-            <Tilt>
-              <Skill key={`skill-${index}`}>
+            <Tilt key={skill.id || `skill-${index}`}>
+              <Skill key={skill.id || `skill-${index}`}>
                 <SkillTitle>{skill.title}</SkillTitle>
                 <SkillList>
-                  {skill.skills.map((item, index_x) => (
-                    <SkillItem key={`skill-${index_x}`}>
-                      <SkillImage src={item.image} />
-                      {item.name}
-                    </SkillItem>
-                  ))}
+                  {skill.skills && skill.skills.length > 0 ? (
+                    skill.skills.map((item, index_x) => (
+                      <SkillItem
+                        key={item.id || `skill-item-${index}-${index_x}`}
+                      >
+                        <SkillImage src={item.image} alt={item.name} />
+                        {item.name}
+                      </SkillItem>
+                    ))
+                  ) : (
+                    <p>Không có kỹ năng nào để hiển thị.</p>
+                  )}
                 </SkillList>
               </Skill>
             </Tilt>

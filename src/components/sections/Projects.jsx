@@ -71,9 +71,12 @@ const ToggleButton = styled.div`
     padding: 6px 8px;
     border-radius: 4px;
   }
-  ${({ active, theme }) => active && `background: ${theme.primary + 20}`}
+  ${({ $active, theme }) =>
+    $active &&
+    `
+      background: ${theme.primary + "20"};
+    `}
 `;
-
 const Divider = styled.div`
   width: 1.5px;
   background: ${({ theme }) => theme.primary};
@@ -88,7 +91,7 @@ const CardContainer = styled.div`
 `;
 
 const Projects = () => {
-  const [toggle, SetToggle] = useState("all");
+  const [toggle, setToggle] = useState("all");
   return (
     <Container id="Projects">
       <Wrapper>
@@ -101,29 +104,29 @@ const Projects = () => {
 
         <ToggleButtonGroup>
           <ToggleButton
-            active={toggle === "all"}
-            onClick={() => SetToggle("all")}
+            $active={toggle === "all"}
+            onClick={() => setToggle("all")}
           >
             ALL
           </ToggleButton>
           <Divider />
           <ToggleButton
-            active={toggle === "web app"}
-            onClick={() => SetToggle("web app")}
+            $active={toggle === "web app"}
+            onClick={() => setToggle("web app")}
           >
             WEB APP'S
           </ToggleButton>
           <Divider />
           <ToggleButton
-            active={toggle === "android app"}
-            onClick={() => SetToggle("android app")}
+            $active={toggle === "android app"}
+            onClick={() => setToggle("android app")}
           >
             ANDROID APP'S
           </ToggleButton>
           <Divider />
           <ToggleButton
-            active={toggle === "machine learning"}
-            onClick={() => SetToggle("machine learning")}
+            $active={toggle === "machine learning"}
+            onClick={() => setToggle("machine learning")}
           >
             MACHINE LEARNING
           </ToggleButton>
@@ -131,11 +134,19 @@ const Projects = () => {
 
         <CardContainer>
           {toggle === "all" &&
-            projects.map((project, index) => <ProjectCard project={project} />)}
+            projects.map((project, index) => (
+              <ProjectCard
+                key={project.id || `project-${index}`}
+                project={project}
+              />
+            ))}
           {projects
             .filter((item) => item.category === toggle)
             .map((project, index) => (
-              <ProjectCard project={project} />
+              <ProjectCard
+                key={project.id || `project-${index}`}
+                project={project}
+              />
             ))}
         </CardContainer>
       </Wrapper>
