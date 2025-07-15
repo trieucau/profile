@@ -9,6 +9,8 @@ import Education from "./components/sections/Education";
 import StyledStarCanvas from "./components/canvas/Stars";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
+import Footer from "./components/sections/Footer";
+
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text_primary};
@@ -51,6 +53,7 @@ function App() {
               <Education />
               <Contact />
             </Wrapper>
+            <Footer />
           </div>
         </Body>
       </BrowserRouter>
