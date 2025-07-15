@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import "react-vertical-timeline-component/style.min.css";
 import emailjs from "@emailjs/browser";
