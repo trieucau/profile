@@ -55,8 +55,7 @@ const Experience = () => {
       <Wrapper>
         <Title>Experience</Title>
         <Desc style={{ marginBottom: "40px" }}>
-          My work experience as a software engineer and work companies and
-          projects.
+          Project Experience / Personal Projects
         </Desc>
 
         <VerticalTimeline>
